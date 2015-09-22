@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
@@ -15,18 +16,43 @@ import android.widget.ImageView;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
+    public enum Moves{PAPER, ROCK, SCISSORS};
+    public enum Outcomes{WIN, LOSS, TIE};
+
+    private Moves humanChoice ;
+    private Moves computerChoice;
+    private Outcomes winningMove;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ImageView rockImage = (ImageView)findViewById(R.id.btnRock);
+        Button rockButton = (Button)findViewById(R.id.btnRock);
+        rockButton.setOnClickListener(this);
 
-        rockImage.SetOnClickListner
-        ImageView paperImage = (ImageView)findViewById(R.id.btnPaper);
+        Button paperButton = (Button)findViewById(R.id.btnPaper);
+        paperButton.setOnClickListener(this);
 
-        ImageView scissorsImage = (ImageView)findViewById(R.id.btnScissors);
+        Button scissorImage = (Button)findViewById(R.id.btnScissors);
+        scissorImage.setOnClickListener(this);
 
     }
+    @Override
+    public void onClick(View v){
+        switch (v.getId())
+        {
+            case R.id.btnRock:
+                humanChoice = Moves.ROCK;
+                break;
+            case R.id.btnPaper:
+                humanChoice = Moves.PAPER;
+                break;
+            case R.id.btnScissors:
+                humanChoice = Moves.SCISSORS;
+                break;
+        }
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -5,7 +5,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
 
-<ImageView
+<Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/rock"
@@ -13,20 +13,20 @@
         android:layout_centerHorizontal="true"
 
         android:id="@+id/btnRock"/>
-    <ImageView
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/paper"
         android:layout_centerHorizontal="true"
 
         android:id="@+id/btnPaper"/>
-    <ImageView
+    <Button
         android:layout_width="wrap_content"
         android:src="@drawable/scissors"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
         android:id="@+id/btnScissors"/>
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+
 
 </RelativeLayout>
