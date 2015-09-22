@@ -1,5 +1,6 @@
 package com.nickmattmiller.rockpaperscissors;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,14 +16,17 @@ import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    @Override
+
+    private static final String TAG = "Rock, Paper, Scissors";
+    public static final String PLAYER_CHOICE = "com.nickmattmiller.rockpaperscissors.player_choice";
+
     public enum Moves{PAPER, ROCK, SCISSORS};
     public enum Outcomes{WIN, LOSS, TIE};
 
     private Moves humanChoice ;
     private Moves computerChoice;
     private Outcomes winningMove;
-
+@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -39,7 +43,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     @Override
     public void onClick(View v){
-        switch (v.getId())
+
+        Intent intent = new Intent(this, ResultsActivity.class);
+        intent.putExtra(PLAYER_CHOICE, v.getId());
+        startActivity(intent);
+
+
+      /*  switch (v.getId())
         {
             case R.id.btnRock:
                 humanChoice = Moves.ROCK;
@@ -50,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnScissors:
                 humanChoice = Moves.SCISSORS;
                 break;
-        }
+        }*/
     }
 
 

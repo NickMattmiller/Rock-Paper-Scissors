@@ -1,9 +1,14 @@
 package com.nickmattmiller.rockpaperscissors;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class ResultsActivity extends AppCompatActivity {
 
@@ -11,6 +16,33 @@ public class ResultsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
+
+        RelativeLayout rl = (RelativeLayout)findViewById(R.id.resultLayout);
+        rl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+
+        //get the player selected choice
+        Intent intent = getIntent();
+
+        Integer playerSelectedChoice = (Integer)intent.getIntExtra(MainActivity.PLAYER_CHOICE,1);
+        ImageView player = (ImageView) findViewById(R.id.btnPlayer);
+        player.setImageResource(GameUtils.convertButtonToImage(playerSelectedChoice));
+
+        //get the a random computer choice
+        Integer computerSelectedChoice = GameUtils.getComputerChoice();
+        ImageView computer = (ImageView) findViewById(R.id.btnComputer);
+        computer.setImageResource(GameUtils.convertButtonToImage(computerSelectedChoice));
+
+        //evaluate winner
+        TextView result = (TextView)findViewById(R.id.txtResult);
+        result.setText(GameUtils.evaluateWinner(playerSelectedChoice, computerSelectedChoice));
+        result.setTextSize(28);
+        result.setTextColor(GameUtils.defineTextColor(result.getText().toString()));
     }
 
     @Override

@@ -12,21 +12,24 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
 
-        android:id="@+id/btnRock"/>
+        android:id="@+id/btnRock"
+    android:background="@drawable/rock" />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/paper"
         android:layout_centerHorizontal="true"
 
-        android:id="@+id/btnPaper"/>
+        android:id="@+id/btnPaper"
+        android:background="@drawable/paper" />
     <Button
         android:layout_width="wrap_content"
         android:src="@drawable/scissors"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:id="@+id/btnScissors"/>
+        android:id="@+id/btnScissors"
+        android:background="@drawable/scissors" />
 
 
 </RelativeLayout>
